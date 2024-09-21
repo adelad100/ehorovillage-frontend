@@ -1,1 +1,0 @@
-# ehorovillage-frontend

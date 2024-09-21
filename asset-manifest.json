@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ehorovillage-frontend/static/css/main.b10e1f9a.css",
+    "main.js": "/ehorovillage-frontend/static/js/main.00919d9a.js",
+    "static/js/453.57913663.chunk.js": "/ehorovillage-frontend/static/js/453.57913663.chunk.js",
+    "index.html": "/ehorovillage-frontend/index.html",
+    "main.b10e1f9a.css.map": "/ehorovillage-frontend/static/css/main.b10e1f9a.css.map",
+    "main.00919d9a.js.map": "/ehorovillage-frontend/static/js/main.00919d9a.js.map",
+    "453.57913663.chunk.js.map": "/ehorovillage-frontend/static/js/453.57913663.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b10e1f9a.css",
+    "static/js/main.00919d9a.js"
+  ]
+}
