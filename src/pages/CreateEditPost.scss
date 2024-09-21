@@ -1,0 +1,122 @@
+/* src/pages/CreateEditPost.scss */
+
+.create-post-page {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--primary-bg-color);
+  }
+  
+  .create-post-form {
+    flex: 1;
+    background-color: #FFF;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .create-post-form h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.8rem;
+    color: #6B4F4F;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: #6B4F4F;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1rem;
+    color: #6B4F4F;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #A8D5A4;
+    outline: none;
+  }
+  
+  textarea {
+    height: 150px;
+    resize: vertical;
+  }
+  
+  .btn-create-post {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #F4BFB5;
+    color: #FFF;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn-create-post:hover {
+    background-color: #F3A9A0;
+    transform: translateY(-3px);
+  }
+  
+  .error-message {
+    color: #FF6B6B;
+    font-family: 'Noto Sans', sans-serif;
+    margin-bottom: 1rem;
+  }
+  
+  .success-message {
+    color: #4CAF50;
+    font-family: 'Noto Sans', sans-serif;
+    margin-bottom: 1rem;
+  }
+  
+  .post-preview {
+    flex: 1;
+    background-color: #FFF;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-preview h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.8rem;
+    color: #6B4F4F;
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+  }
+  
+  .post-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    color: #6B4F4F;
+  }
+  
+  .post-card p {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1rem;
+    color: #6B4F4F;
+  }
+  

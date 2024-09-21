@@ -1,0 +1,36 @@
+/* src/components/Navbar.scss */
+.navbar {
+    background-color: var(--primary-bg-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-text-color);
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .navbar-links li {
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-weight: 600;
+  }
+  
+  .navbar-links a:hover {
+    color: var(--accent-color);
+  }
+  
