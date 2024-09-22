@@ -1,98 +1,51 @@
 // src/pages/Register.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import API from './api'; // Assuming you have an Axios instance for API calls
-import './Auth.scss'; // Shared styles for authentication pages
+import API from './api'; // Import the configured Axios instance
 
 function Register() {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
     try {
-      const response = await API.post('/auth/register', formData);
-      if (response.data) {
-        navigate('/login');
-      }
+      const response = await API.post('/api/auth/register', { username, email, password });
+      window.location.href = '/login'; // Redirect to the login page after successful registration
     } catch (error) {
-      setError('Registration failed. Please try again.');
+      setError('Failed to register. Please try again later.');
     }
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h2>Create an Account</h2>
-        <form onSubmit={handleSubmit}>
-          {error && <p className="error-message">{error}</p>}
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit" className="btn-auth">Register</button>
-          <p className="switch-auth">
-            Already have an account? <a href="/login">Log In</a>
-          </p>
-        </form>
-      </div>
+    <div className="register-page">
+      <h2>Register</h2>
+      {error && <p className="error-message">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          required
+        />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Register</button>
+      </form>
     </div>
   );
 }

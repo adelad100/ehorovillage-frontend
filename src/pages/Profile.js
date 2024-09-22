@@ -1,68 +1,42 @@
 // src/pages/Profile.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Profile.scss';
+import API from '../api'; // Import the configured Axios instance
 
 function Profile() {
-  const [user, setUser] = useState(null); // To hold the user data
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(''); // Error state
-  const navigate = useNavigate(); // For navigation
+  const [profile, setProfile] = useState({});
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProfileData = async () => {
+    const fetchProfile = async () => {
       try {
-        const token = localStorage.getItem('token'); // Retrieve token from localStorage
-
-        // If no token, redirect to login
+        const token = localStorage.getItem('token');
         if (!token) {
-          navigate('/login');
-          return;
+          return navigate('/login'); // Redirect to login if no token is found
         }
 
-        // Fetch the user profile data from the backend
-        const response = await axios.get('http://localhost:5000/api/user/profile', {
-          headers: {
-            Authorization: token, // Include the token in the Authorization header
-          },
+        const response = await API.get('/api/user/profile', {
+          headers: { Authorization: `Bearer ${token}` },
         });
-
-        setUser(response.data); // Set the user data
-        setLoading(false); // Set loading to false
+        setProfile(response.data);
       } catch (error) {
-        console.error('Error fetching profile data:', error);
-        setError('Unable to fetch profile data. Please try again later.');
-        setLoading(false);
+        console.error('Error fetching profile:', error);
+        setError('Unable to fetch profile. Please try again later.');
       }
     };
-
-    fetchProfileData();
+    fetchProfile();
   }, [navigate]);
-
-  if (loading) {
-    return <div className="profile-page">Loading...</div>; // Display loading message while data is being fetched
-  }
-
-  if (error) {
-    return <div className="profile-page error">{error}</div>; // Display error message if there's an issue
-  }
 
   return (
     <div className="profile-page">
-      {user && (
-        <div className="profile-card">
-          <img
-            src={user.profilePicture || '/default-avatar.png'}
-            alt={user.username}
-            className="profile-picture"
-          />
-          <h2>{user.username}</h2>
-          <p>{user.email}</p>
-          <p>{user.bio}</p>
-          {/* Display additional user information here */}
-        </div>
-      )}
+      <h2>Your Profile</h2>
+      {error && <p className="error-message">{error}</p>}
+      <div className="profile-info">
+        <h3>Username: {profile.username}</h3>
+        <p>Email: {profile.email}</p>
+        {/* Add more profile information here as needed */}
+      </div>
     </div>
   );
 }
